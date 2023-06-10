@@ -10,7 +10,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
         req_body = req.get_json()
     except ValueError:
-        pass
-    data = get_kv_secret_by_key(req_body.get('key'))
+        raise Exception(f'Error parsing request ${req}')
+
+    request_key = req_body.get('key')
+    logging.log(f'req body carries key ${request_key}')
+    data = get_kv_secret_by_key(request_key)
 
     return func.HttpResponse(json.dumps(data), headers={"content-type": "application/json"})
