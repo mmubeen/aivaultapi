@@ -20,6 +20,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(json.dumps(data), headers={"content-type": "application/json"})
     except services.kv_secrets_service.KeyVaultSecretNotFoundError as e:
         return func.HttpResponse(status_code=HTTPStatus.NOT_FOUND)
-    except services.kv_secrets_service.KeyVaultNotFoundError as e:
+    except services.kv_secrets_service.KeyVaultServiceError as e:
         return func.HttpResponse(status_code=HTTPStatus.UNPROCESSABLE_ENTITY)
 
