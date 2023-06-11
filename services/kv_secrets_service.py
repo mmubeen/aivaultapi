@@ -9,7 +9,7 @@ def get_kv_secret_by_key(secret_key):
     key_vault_url = os.getenv("KEY_VAULT_URL")
 
     try:
-        secret_client = SecretClient(vault_url=key_vault_url, credential=DefaultAzureCredential())
+        secret_client = SecretClient(vault_url=key_vault_url, credential=credential)
     except ResourceNotFoundError as e:
         raise Exception(f'Key vault <${key_vault_url}> not found ')
 
