@@ -1,4 +1,4 @@
-from azure.core.exceptions import ResourceNotFoundError
+from azure.core.exceptions import ResourceNotFoundError, ServiceRequestError
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient, KeyVaultSecret
 import os
@@ -10,7 +10,7 @@ def get_kv_secret_by_key(secret_key) -> str:
 
     try:
         secret_client = SecretClient(vault_url=key_vault_url, credential=credential)
-    except ResourceNotFoundError as e:
+    except ServiceRequestError as e:
         raise KeyVaultNotFoundError(f'Key vault <${key_vault_url}> not found ')
 
     try:

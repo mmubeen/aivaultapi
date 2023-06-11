@@ -2,7 +2,7 @@ import unittest
 from unittest import mock
 from unittest.mock import patch, MagicMock
 
-from azure.core.exceptions import ResourceNotFoundError
+from azure.core.exceptions import ResourceNotFoundError, ServiceRequestError
 
 from services.kv_secrets_service import get_kv_secret_by_key, KeyVaultNotFoundError, KeyVaultSecretNotFoundError
 from azure.keyvault.secrets import SecretClient
@@ -24,7 +24,7 @@ class MockingTestTestCase(unittest.TestCase):
     @patch("azure.identity.DefaultAzureCredential")
     def test_get_kv_secret_by_key_key_vault_not_found(self, mock_credential: MagicMock, mock_get_env: MagicMock):
         with patch("azure.keyvault.secrets.SecretClient") as mock_function:
-            mock_function.raiseError.side_effect = self.resource_not_found_side_effect
+            mock_function.raiseError.side_effect = self.service_not_found_side_effect
             _ = get_kv_secret_by_key("key1")
             self.assertRaises(KeyVaultNotFoundError)
 
@@ -38,3 +38,6 @@ class MockingTestTestCase(unittest.TestCase):
 
     def resource_not_found_side_effect():
         raise ResourceNotFoundError()
+
+    def service_not_found_side_effect():
+        raise ServiceRequestError()
