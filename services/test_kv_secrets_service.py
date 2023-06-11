@@ -9,5 +9,4 @@ class MockingTestTestCase(unittest.TestCase):
     @patch("azure.identity.DefaultAzureCredential")
     @patch.object(SecretClient, "get_secret", return_value="value1")
     def test_get_kv_secret_by_key(self, mock_client: MagicMock, mock_credential: MagicMock):
-
         get_kv_secret_by_key("key1")
