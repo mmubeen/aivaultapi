@@ -13,7 +13,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         raise Exception(f'Error parsing request ${req}')
 
     request_key = req_body.get('key')
-    logging.log(msg=f'req body carries key ${request_key}')
+    logging.log('req body carries key: %s' % request_key)
     data = get_kv_secret_by_key(request_key)
 
     return func.HttpResponse(json.dumps(data), headers={"content-type": "application/json"})
