@@ -2,5 +2,6 @@ azure-functions
 azure-keyvault-secrets
 azure-identity
 azure-core
+requests
 responses
 mock
