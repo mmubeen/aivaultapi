@@ -5,3 +5,5 @@ azure-core
 requests
 responses
 mock
+msal
+msal_requests_auth

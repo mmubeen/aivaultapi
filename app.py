@@ -25,14 +25,22 @@ def get_token(auth_url, client_id, scope, client_secret, grant_type = 'client_cr
     return r.json(), r.status_code
 
 # Change these vars to test:
-auth_url = 'https://login.microsoftonline.com/7d5a8898-6564-4329-9289-c87046c026ef/oauth2/v2.0/token'
-client_id = '37d5eb41-d3a7-4995-bb4b-29d4f9f2db2e'
-scope = 'api://37d5eb41-d3a7-4995-bb4b-29d4f9f2db2e/.default'
-client_secret = "NX.8Q~jnAl_9sYQAWRphVPsv9QtBIwS~PuRAGdr~"
+# auth_url = 'https://login.microsoftonline.com/7d5a8898-6564-4329-9289-c87046c026ef/oauth2/v2.0/token'
+auth_url = 'https://login.microsoftonline.com/3e9aadf8-6a16-490f-8dcd-c68860caae0b/oauth2/v2.0/token'
+client_id = '18edded3-3130-4d99-9ce0-f88dfaa04ebf'
+scope = 'api://18edded3-3130-4d99-9ce0-f88dfaa04ebf/ApiUser.Read'
+client_secret = "2B08Q~Qa7mE-IrqkS6HyuC9mPpYm01s60u6YnaoD"
 
 
-url_check = 'https://ai-apim.azure-api.net/aivaultapi/tasks'
-get_token = get_token(auth_url, client_id, scope, client_secret)
+# client_id = 'bd01c2aa-22e4-404e-8ddf-a0425166d632'
+# scope = 'api://bd01c2aa-22e4-404e-8ddf-a0425166d632/.default'
+# client_secret = "Gm28Q~koyfbmz1ts_XxG7ukgKVPVUZhEzXPekbR3"
+
+
+# url_check = 'https://ai-apim.azure-api.net/aivaultapi/tasks'
+url_check = 'https://regn-eastus-ga-prod-apim-ai-001.azure-api.net/REGN-EastUS-GA-Prod-FA-AI-001/tasks'
+get_token, _ = get_token(auth_url, client_id, scope, client_secret, 'authorization_code')
+print(get_token)
 access_token = get_token[0]['access_token']
 print(access_token)
 header_token = {"Authorization": "Bearer {}".format(access_token)}
