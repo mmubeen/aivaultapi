@@ -37,7 +37,7 @@ app = ClientApplication(
 )
 
 acquire_tokens_result = app.acquire_token_by_username_password(username='svc.dte-azopenai@regeneron.com',
-                                                               password='pzW3QrAm4?*,PQ7n',
+                                                               password='',
                                                                scopes=scopes)
 request_data=b'{"prompt":"What should be the body of the email?","max_tokens":350,"temperature":1,"frequency_penalty":0,"presence_penalty":0,"top_p":1,"stop":null}'
 if 'error' in acquire_tokens_result:

@@ -39,7 +39,7 @@ app = ClientApplication(
 )
 
 acquire_tokens_result = app.acquire_token_by_username_password(username='admin_openai@ecfdata.com',
-                                                               password='o1@F}93BMc4.)uq',
+                                                               password='',
                                                                scopes=scopes)
 
 if 'error' in acquire_tokens_result:

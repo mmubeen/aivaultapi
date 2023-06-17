@@ -39,7 +39,7 @@ app = ClientApplication(
 )
 
 acquire_tokens_result = app.acquire_token_by_username_password(username='admin_openai@ecfdata.com',
-                                                               password='o1@F}93BMc4.)uq',
+                                                               password='',
                                                                scopes=scopes)
 request_data=b'{"prompt":"Write a product launch email for new AI-powered headphones that are priced at $79.99 and available at Best Buy, Target and Amazon.com. The target audience is tech-savvy music lovers and the tone is friendly and exciting.\n\n1. What should be the subject line of the email?  \n2. What should be the body of the email?","max_tokens":350,"temperature":1,"frequency_penalty":0,"presence_penalty":0,"top_p":1,"stop":null}'
 if 'error' in acquire_tokens_result:

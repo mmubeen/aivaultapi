@@ -37,7 +37,7 @@ app = ClientApplication(
 )
 
 acquire_tokens_result = app.acquire_token_by_username_password(username='svc.dte-azopenai@regeneron.com',
-                                                               password='pzW3QrAm4?*,PQ7n',
+                                                               password='',
                                                                scopes=scopes)
 
 if 'error' in acquire_tokens_result:
