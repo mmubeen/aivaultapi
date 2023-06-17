@@ -7,3 +7,4 @@ responses
 mock
 msal
 msal_requests_auth
+azure-mgmt-resource

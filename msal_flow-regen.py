@@ -47,7 +47,12 @@ else:
     header_token = {"Authorization": "Bearer {}".format(acquire_tokens_result['access_token'])}
     rt = requests.post(url=endpoint, headers=header_token, data=b'{"key":"apimunlimitedkey1"}')
 
-    request_data = b'{"prompt":"What should be the body of the email?","max_tokens":350,"temperature":1,"frequency_penalty":0,"presence_penalty":0,"top_p":1,"stop":null}'
+    request_data = b'{"prompt":"What should be the body of the email?",' \
+                   b'"max_tokens":350,"temperature":1,' \
+                   b'"frequency_penalty":0,' \
+                   b'"presence_penalty":0,' \
+                   b'"top_p":1,' \
+                   b'"stop":null}'
     ai_header_key = {"Ocp-Apim-Subscription-Key": "{}".format(rt.json())}
     ai_rt = requests.post(url=ai_endpoint, headers=ai_header_key, data=request_data)
 
